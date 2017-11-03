@@ -7,6 +7,7 @@ import time
 import telepot
 from telepot.loop import MessageLoop
 import sys
+import schedule
 
 url = "https://www.studentenwerk-wuerzburg.de/essen-trinken/speiseplaene/plan/show/mensateria-campus-nord.html"
 
@@ -39,6 +40,15 @@ def format_meals(meals):
             text = text + "- ***" + meal[0] + "***:\n    - " + meal[1] + "\n    - " + meal[2] + "\n \n"
         return text
 
+def get_menu_text():
+    weekday = datetime.weekday(datetime.now())
+    if weekday > 4:
+        bot.sendMessage(chat_id, 'Hoch die Hände, Wochenende!')
+    else:
+        soup = get_site(url)
+        meals = get_menu_today(soup, weekday)
+        return format_meals(meals)
+
 
 def handle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
@@ -49,21 +59,22 @@ def handle(msg):
         text = msg['text']
         
         if text.startswith('/menu'):
-            weekday = datetime.weekday(datetime.now())
-            if weekday > 4:
-                bot.sendMessage(chat_id, 'Hoch die Hände, Wochenende!')
-            else:
-                soup = get_site(url)
+            message = get_menu_text()
+            bot.sendMessage(chat_id, message, parse_mode='markdown')
 
-                meals = get_menu_today(soup, weekday)
-                bot.sendMessage(chat_id, format_meals(meals), parse_mode='markdown')
         else:
             return
     else:
         return
+
+
 TOKEN = sys.argv[1]
 
 bot = telepot.Bot(TOKEN)
+
+
+
+
 MessageLoop(bot, handle).run_as_thread()
 print ('Listening ...')
 
