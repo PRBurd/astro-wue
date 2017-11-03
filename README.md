@@ -1,10 +1,12 @@
 # astro-wue
 
-First working version of a Telegram MensaBot http://t.me/astrowue_bot  
-The command /menu will return todays menu of the Mensateria Hubland Nord.  
-\n
-To receive the menu every day, type send the /start command.  
-The /stop command cancels the subscription.  
+First working version of a Telegram MensaBot http://t.me/astrowue_bot
+
+The command /menu will return todays menu of the Mensateria Hubland Nord.
+
+
+To receive the menu every day, type send the /start command.
+The /stop command cancels the subscription.
   
   
 This project is inspired and loosely based on https://github.com/MaxNoe/mensabot/  
