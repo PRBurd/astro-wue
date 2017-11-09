@@ -75,7 +75,7 @@ def send_menu_to_all():
         for recipient in Recipient.select():
             print("   Sending menu to",recipient.chat_id)
             sendMessage(recipient.chat_id, message, parse_mode='markdown')
-   print("##########################")
+    print("##########################")
 
 def sendMessage(chat_id, message, **kwargs):
     print("    Trying to send message")
