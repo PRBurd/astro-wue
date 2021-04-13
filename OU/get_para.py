@@ -3,7 +3,7 @@ import numpy as np
 
 # General:
 # feed with np.array with time series [np.10(flux)] only, non significant values (e.g. TS not fulfilled), need to be set to np.nan
-# if the flux values are given in some kind of gauged units (e.g. FACT/MAGIC crab units), feed these values directly
+# if the flux values are given in some kind of gauged units (e.g. FACT/MAGIC crab units), be carefull about what the gauge means exactly is there already a log in any kind?
 
 # Some basic exceptions used (subject to change)
 
