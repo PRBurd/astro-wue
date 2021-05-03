@@ -1,5 +1,5 @@
 import numpy as np 
-import ou_generator_l as ou 
+import ou_generator as ou 
 import random_by_cdf as rcdf 
 
 size = (100, )
