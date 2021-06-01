@@ -36,7 +36,7 @@ def get_sigma(data, lower, upper):
 
 
 def get_alpha_abs(data, sigma):
-    return np.sqrt(1-(sigma**2/np.var(data[~np.isnan(data)])))
+    return np.sqrt(np.abs(1-(sigma**2/np.var(data[~np.isnan(data)]))))
 
 
 def get_alpha_pm(data, mean, lower, upper):
